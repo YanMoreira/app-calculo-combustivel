@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0554F2</color>
+    <color name="colorPrimaryDark">#0554F2</color>
+    <color name="colorAccent">#0554F2</color>
+    <color name="corEstilo">#0554F2</color>
+    <color name="corBase">#f9f9f9</color>
+    <color name="corLabelFab">#F1EFEF</color>
+    <color name="corFabPressionado">#99FFFFFF</color>
+</resources>
