@@ -1,17 +1,17 @@
 package com.example.calculadoradecombustvel;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.core.content.ContextCompat;
-
-import android.content.Context;
-import android.graphics.Color;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton localizarPosto, consumoViagem, visualizarLista;
     private Button botaoCalc;
-    private TextInputEditText editTextGasolina, editTextEtanol;
+    private TextInputEditText editTextGasolina, editTextEtanol, editTextKmlGasolina, editTextKmlEtanol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
         editTextGasolina = findViewById(R.id.editTextGasolina);
         editTextEtanol = findViewById(R.id.editTextEtanol);
+        editTextKmlGasolina = findViewById(R.id.editTextKmlGasolina);
+        editTextKmlEtanol = findViewById(R.id.EditTextKmlEtanol);
 
         localizarPosto = findViewById(R.id.localizarPosto);
         consumoViagem = findViewById(R.id.consumoViagem);
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                postoMaisProximo();
             }
         });
 
@@ -63,37 +66,43 @@ public class MainActivity extends AppCompatActivity {
 
         String valorGasolina = editTextGasolina.getText().toString();
         String valorEtanol = editTextEtanol.getText().toString();
+        String valorKmlGasolina = editTextKmlGasolina.getText().toString();
+        String valorKmlEtanol = editTextKmlEtanol.getText().toString();
 
-        String erroValidacao = validarCampos(valorGasolina, valorEtanol);
+        String erroValidacao = validarCampos(valorGasolina, valorEtanol, valorKmlGasolina, valorKmlEtanol);
 
         if (erroValidacao.equals("")) {
 
-            String resultado = calcularResultadoValidado(valorGasolina, valorEtanol);
+            String resultado = calcularResultadoValidado(valorGasolina, valorEtanol, valorKmlGasolina, valorKmlEtanol);
 
-            //Esconder teclado
+            //fechar teclado para melhor visualização
 
-            if(view != null) {
+            fecharTeclado(view);
 
-                InputMethodManager input = (InputMethodManager) getSystemService(this.INPUT_METHOD_SERVICE);
-                input.hideSoftInputFromWindow(view.getWindowToken(), 0);
-            }
-            //Gerar notificação do resultado
-            Snackbar.make(view, resultado, Snackbar.LENGTH_LONG)
+            //Gerar pop-up do resultado
+            Snackbar snackbar = Snackbar.make(view, resultado, Snackbar.LENGTH_LONG)
                     .setBackgroundTint(getResources().getColor(R.color.corEstilo))
-                    .setTextColor(getResources().getColor(R.color.corBase))
-                    .setAction("OK", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
+                    .setTextColor(getResources().getColor(R.color.corBase));
 
-                        }
-                    }).show();
+            View snackbarView = snackbar.getView();
+
+            TextView textView = snackbarView.findViewById(R.id.snackbar_text);
+
+            //Modificações no texto do snackBar
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+            textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            snackbarView.setPadding(0, 20, 0, 20);
+            snackbar.show();
+
         } else {
 
-            Toast.makeText(getApplicationContext(), erroValidacao, Toast.LENGTH_LONG).show();
+          Toast toast = Toast.makeText(this, erroValidacao, Toast.LENGTH_LONG);
+          toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.START, 240, -25);
+          toast.show();
         }
     }
 
-    public String validarCampos(String vGasolina, String vEtanol) {
+    public String validarCampos(String vGasolina, String vEtanol, String vKmlGasolina, String vKmlEtanol) {
 
         String campoNulo = "";
 
@@ -108,31 +117,68 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        if (vGasolina.equals("") && vEtanol.equals("")) {
+        if (vKmlGasolina.equals("")) {
 
-            campoNulo = "Digite os preços dos combustíveis";
+            campoNulo = "Por favor, digite o km/l da gasolina";
+        }
+
+        if (vKmlEtanol.equals("")) {
+
+            campoNulo = "Por favor, digite o km/l do etanol";
+        }
+
+
+        if (vGasolina.equals("") && vEtanol.equals("") && vKmlGasolina.equals("") && vKmlEtanol.equals("")) {
+
+            campoNulo = "Digite os campos corretamente";
 
         }
 
         return campoNulo;
     }
 
-    public String calcularResultadoValidado(String valorGasolina, String valorEtanol) {
+    public String calcularResultadoValidado(String valorGasolina, String valorEtanol,
+                                            String valorKmlGasolina, String valorKmlEtanol) {
+
+        //Convertendo valores para iniciar os cálculos
 
         double valorConvertGasolina = Double.parseDouble(valorGasolina);
         double valorConvertEtanol = Double.parseDouble(valorEtanol);
-
-        double resultadoDivisao = valorConvertEtanol / valorConvertGasolina;
-
-        if (resultadoDivisao >= 0.7) {
+        double valorConvertKmlGasolina = Double.parseDouble(valorKmlGasolina);
+        double valorConvertKmlEtanol = Double.parseDouble(valorKmlEtanol);
 
 
-            return "Utilize gasolina para maior economia!";
+        double resultadoRendimentoCarro = valorConvertKmlEtanol / valorConvertKmlGasolina;
+
+        double resultadoValorCombustivel = valorConvertEtanol / valorConvertGasolina;
+
+        if (resultadoValorCombustivel <= resultadoRendimentoCarro) {
+
+
+            return "Utilize etanol para maior economia!";
 
         } else {
 
-            return "utilize etanol para maior economia!";
+            return "utilize gasolina para maior economia!";
         }
 
+    }
+
+
+    public void fecharTeclado(View view) {
+
+        if (view != null) {
+
+            InputMethodManager input = (InputMethodManager) getSystemService(this.INPUT_METHOD_SERVICE);
+            input.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
+    public void postoMaisProximo() {
+
+        String endereco = "https://www.google.com/maps/dir/?api=1&destination=posto+de+combustivel&travelmode=driving";
+
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(endereco));
+        startActivity(intent);
     }
 }

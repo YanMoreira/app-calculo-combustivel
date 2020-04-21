@@ -4,8 +4,8 @@
     <string name="fab_navegar">Encontrar o posto mais próximo</string>
     <string name="fab_consumo">Consumo em viagem</string>
     <string name="text_melhor_opcao">Descubra qual é o combustível mais vantajoso para o seu bolso!</string>
-    <string name="input_edit_gasolina">Preço da gasolina</string>
-    <string name="input_edit_etanol">Preço do etanol</string>
+    <string name="input_edit_gasolina">Preço da gasolina comum</string>
+    <string name="input_edit_etanol">Preço do etanol comum</string>
     <string name="input_edit_kml_etanol"> km/l etanol</string>
     <string name="input_edit_kml_gasolina"> km/l gasolina</string>
     <string name="botao_calcular">Calcular</string>

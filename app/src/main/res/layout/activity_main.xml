@@ -61,16 +61,6 @@
         app:menu_showShadow="true">
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/visualizarLista"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_fab_lista"
-            app:fab_colorNormal="@color/corBase"
-            app:fab_colorPressed="@color/corFabPressionado"
-            app:fab_label="@string/fab_lista"
-            app:fab_size="mini" />
-
-        <com.github.clans.fab.FloatingActionButton
             android:id="@+id/localizarPosto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,6 +68,16 @@
             app:fab_colorNormal="@color/corBase"
             app:fab_colorPressed="@color/corFabPressionado"
             app:fab_label="@string/fab_navegar"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/visualizarLista"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_fab_lista"
+            app:fab_colorNormal="@color/corBase"
+            app:fab_colorPressed="@color/corFabPressionado"
+            app:fab_label="@string/fab_lista"
             app:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
