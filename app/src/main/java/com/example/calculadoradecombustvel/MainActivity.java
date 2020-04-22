@@ -1,5 +1,6 @@
 package com.example.calculadoradecombustvel;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -80,9 +81,10 @@ public class MainActivity extends AppCompatActivity {
             fecharTeclado(view);
 
             //Gerar pop-up do resultado
-            Snackbar snackbar = Snackbar.make(view, resultado, Snackbar.LENGTH_LONG)
+                final Snackbar snackbar = Snackbar.make(view, resultado, Snackbar.LENGTH_INDEFINITE)
                     .setBackgroundTint(getResources().getColor(R.color.corEstilo))
-                    .setTextColor(getResources().getColor(R.color.corBase));
+                    .setTextColor(getResources().getColor(R.color.corBase))
+                    .setDuration(10000);
 
             View snackbarView = snackbar.getView();
 
