@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:colorBackground">@color/corBase</item>
+        <item name="android:titleTextColor">@color/corBase</item>
     </style>
     
     <style name="custom_fab">

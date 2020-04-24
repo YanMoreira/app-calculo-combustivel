@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".CustoViagemActivity"
-            android:screenOrientation="sensor"></activity>
+            android:screenOrientation="locked"></activity>
         <activity android:name=".MainActivity"
             android:screenOrientation="sensor">
             <intent-filter>

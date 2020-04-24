@@ -12,14 +12,15 @@
 
     <!-- Strings da tela custo viagem-->
 
-    <string name="titulo_tela_viagem">Aqui você pode calcular o quanto de combustível
-        gastará em uma viagem, seja ela com gasolina ou etanol.</string>
-
-    <string name="input_edit_km_total_viagem">Estimativa de quilometragem na viagem</string>
-    <string name="input_edit_gasolina_viagem">Preço gasolina</string>
-    <string name="input_edit_etanol_viagem">Preço etanol</string>
+    <string name="titulo_tela_viagem">Custo do combustível em viagem</string>
+    <string name="input_edit_km_total_viagem">Estimativa de quilometragem</string>
+    <string name="input_edit_gasolina_viagem">Preço gasolina comum</string>
+    <string name="input_edit_etanol_viagem">Preço etanol comum</string>
     <string name="input_edit_kml_gasolina_viagem"> km/l gasolina</string>
     <string name="input_edit_kml_etanol_viagem"> km/l etanol</string>
+    <string name="botao_calcular_viagem">Calcular</string>
+    <string name="switch_gasolina">Gasolina</string>
+    <string name="switch_etanol">Etanol</string>
 
 
 </resources>

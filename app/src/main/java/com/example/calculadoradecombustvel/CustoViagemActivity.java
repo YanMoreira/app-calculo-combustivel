@@ -21,11 +21,12 @@ public class CustoViagemActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //Desabilitando o título embutido da barra de farramentas
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        toolbar.setNavigationIcon(R.drawable.ic_seta_voltar_custo_viagem);
-
         //Adicionando ação para o botão de voltar na barra de ferramentas
+        toolbar.setNavigationIcon(R.drawable.ic_seta_voltar_custo_viagem);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
