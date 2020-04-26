@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CustoViagemActivity" >
+    tools:context=".activity.CustoViagemActivity" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -119,6 +119,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/input_edit_etanol_viagem"
+                android:inputType="numberDecimal"
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -160,6 +161,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:hint="@string/input_edit_kml_etanol_viagem"
+                android:inputType="numberDecimal"
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
 

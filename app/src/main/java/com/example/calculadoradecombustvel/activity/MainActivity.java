@@ -1,6 +1,5 @@
-package com.example.calculadoradecombustvel;
+package com.example.calculadoradecombustvel.activity;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,8 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
+import com.example.calculadoradecombustvel.R;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
@@ -52,14 +51,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(), CustoViagemActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(getApplicationContext(),CustoViagemActivity.class));
             }
         });
 
         visualizarLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                startActivity(new Intent(getApplicationContext(),ListaActivity.class));
 
             }
         });

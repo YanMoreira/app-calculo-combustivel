@@ -9,9 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CustoViagemActivity"
-            android:screenOrientation="locked"></activity>
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".activity.ListaActivity"
+            android:label="@string/title_activity_lista"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".activity.CustoViagemActivity"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".activity.MainActivity"
             android:screenOrientation="sensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
