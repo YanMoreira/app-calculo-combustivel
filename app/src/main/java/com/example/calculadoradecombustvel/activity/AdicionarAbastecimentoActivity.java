@@ -9,16 +9,14 @@ import android.view.View;
 
 import com.example.calculadoradecombustvel.R;
 
-public class CustoViagemActivity extends AppCompatActivity {
-
+public class AdicionarAbastecimentoActivity extends AppCompatActivity {
     private Toolbar toolbar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_custo_viagem);
+        setContentView(R.layout.activity_adicionar_abastecimento);
 
-        toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbarLista);
         setSupportActionBar(toolbar);
 
         //Adicionando ação para o botão de voltar na barra de ferramentas
@@ -27,12 +25,8 @@ public class CustoViagemActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                startActivity(new Intent(getApplicationContext(),ListaActivity.class));
             }
         });
-
-
-        }
-
+    }
 }
-

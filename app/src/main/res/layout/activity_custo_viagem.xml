@@ -16,6 +16,8 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="0dp"
+            app:title="@string/titulo_tela_viagem"
+            app:titleTextColor="@color/corBase"
             android:layout_height="wrap_content"
             android:background="@color/corEstilo"
             android:minHeight="?attr/actionBarSize"
@@ -23,17 +25,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/titulo_tela_viagem"
-            android:textColor="@color/corBase"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
 
         <Switch

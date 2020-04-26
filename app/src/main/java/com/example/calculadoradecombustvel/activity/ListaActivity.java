@@ -1,5 +1,6 @@
 package com.example.calculadoradecombustvel.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.calculadoradecombustvel.R;
@@ -33,6 +34,16 @@ public class ListaActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Adicionando ação para o botão de voltar na barra de ferramentas
+        toolbar.setNavigationIcon(R.drawable.ic_seta_voltar_toolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            }
+        });
+
         //Configurar recycler
         recyclerLista = findViewById(R.id.recyclerLista);
 
@@ -40,8 +51,8 @@ public class ListaActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+               startActivity(new Intent(getApplicationContext(), AdicionarAbastecimentoActivity.class));
             }
         });
     }

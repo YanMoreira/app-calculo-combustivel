@@ -22,14 +22,17 @@
     <string name="switch_gasolina">Gasolina</string>
     <string name="switch_etanol">Etanol</string>
     <string name="title_activity_lista">ListaActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    
+    <!-- Strings da tela adicionar abastecimento -->
+    
+    <string name="tipo_combustivel">Tipo do combustível abastecido</string>
+    <string name="preco_pago">Preço do combustível</string>
+    <string name="data_abastecimento">Data de abastecimento</string>
+    <string name="botao_salvar">salvar</string>
+    <string name="titulo_tela_add_abastecimento">Adicionar abastecimento</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- Strings da tela lista de abastecimentos -->
 
+    <string name="titulo_tela_lista">Lista de abastecimentos</string>
 
 </resources>
