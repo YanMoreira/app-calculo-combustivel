@@ -162,6 +162,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/plano_de_fundo_botao_calc"
+            android:onClick="botaoCalcularViagem"
             android:text="@string/botao_calcular_viagem"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
