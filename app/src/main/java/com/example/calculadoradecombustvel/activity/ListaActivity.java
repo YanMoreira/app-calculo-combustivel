@@ -62,20 +62,20 @@ public class ListaActivity extends AppCompatActivity {
         //Listar abastecimentos
         Lista lista1 = new Lista();
         lista1.setNomeCombutivel("Gasolina");
-        lista1.setValorCombustivel("100");
-        lista1.setDataCombustivel("19/10/2020");
+        lista1.setValorCombustivel("100,00");
+        lista1.setDataCombustivel("19/03/2020");
         listaAbastecimentos.add(lista1);
 
         Lista lista2 = new Lista();
         lista2.setNomeCombutivel("Etanol");
-        lista2.setValorCombustivel("200");
-        lista2.setDataCombustivel("19/10/2020");
+        lista2.setValorCombustivel("200,00");
+        lista2.setDataCombustivel("03/04/2020");
         listaAbastecimentos.add(lista2);
 
         Lista lista3 = new Lista();
         lista3.setNomeCombutivel("Gasolina");
-        lista3.setValorCombustivel("1600,00");
-        lista3.setDataCombustivel("19/10/2020");
+        lista3.setValorCombustivel("160,00");
+        lista3.setDataCombustivel("19/04/2020");
         listaAbastecimentos.add(lista3);
 
         //Configurar Adapter

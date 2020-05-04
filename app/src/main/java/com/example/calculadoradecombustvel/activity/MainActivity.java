@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
             String resultado = calcularResultadoValidado(valorGasolina, valorEtanol, valorKmlGasolina, valorKmlEtanol);
 
             //fechar teclado para melhor visualização
-
             fecharTeclado(view);
 
             //Gerar pop-up do resultado

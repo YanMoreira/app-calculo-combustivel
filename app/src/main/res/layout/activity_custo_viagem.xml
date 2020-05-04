@@ -13,19 +13,20 @@
         app:layout_anchor="@+id/constraintLayout2"
         app:layout_anchorGravity="center">
 
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="0dp"
-            app:title="@string/titulo_tela_viagem"
-            app:titleTextColor="@color/corBase"
             android:layout_height="wrap_content"
             android:background="@color/corEstilo"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@string/titulo_tela_viagem"
+            app:titleTextColor="@color/corBase" />
 
         <Switch
             android:id="@+id/switchGasolina"
@@ -68,10 +69,10 @@
                 android:id="@+id/editTextKmTotal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
                 android:gravity="center"
                 android:hint="@string/input_edit_km_total_viagem"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -89,6 +90,7 @@
                 android:id="@+id/editTextGasolinaViagem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:hint="@string/input_edit_gasolina_viagem"
                 android:inputType="numberDecimal"
                 android:textSize="16sp" />
@@ -109,6 +111,7 @@
                 android:id="@+id/editTextEtanolViagem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:hint="@string/input_edit_etanol_viagem"
                 android:inputType="numberDecimal"
                 android:textSize="16sp" />
@@ -168,6 +171,105 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout10" />
+
+        <TextView
+            android:id="@+id/colunaEtanol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="50dp"
+            android:text="@string/coluna_etanol"
+            android:textColor="@color/corTextoTabela"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
+        <TextView
+            android:id="@+id/colunaGasolina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="24dp"
+            android:text="@string/coluna_gasolina"
+            android:textColor="@color/corTextoTabela"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
+        <TextView
+            android:id="@+id/linhaConsumo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@string/linha_tanqueCombustivel"
+            android:textColor="@color/corTextoTabela"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+        <TextView
+            android:id="@+id/linhaPreco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/linha_valor"
+            android:textColor="@color/corTextoTabela"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linhaConsumo" />
+
+        <TextView
+            android:id="@+id/textConsumoGasolina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+        <TextView
+            android:id="@+id/textPrecoGasolina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/textConsumoGasolina" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.74" />
+
+        <TextView
+            android:id="@+id/textConsumoEtanol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+        <TextView
+            android:id="@+id/textPrecoEtanol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/textConsumoEtanol" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -13,7 +13,7 @@
     <!-- Strings da tela custo viagem-->
 
     <string name="titulo_tela_viagem">Custo do combustível em viagem</string>
-    <string name="input_edit_km_total_viagem">Estimativa de quilometragem</string>
+    <string name="input_edit_km_total_viagem">Estimativa da quilometragem percorrida</string>
     <string name="input_edit_gasolina_viagem">Preço gasolina comum</string>
     <string name="input_edit_etanol_viagem">Preço etanol comum</string>
     <string name="input_edit_kml_gasolina_viagem"> km/l gasolina</string>
@@ -22,6 +22,10 @@
     <string name="switch_gasolina">Gasolina</string>
     <string name="switch_etanol">Etanol</string>
     <string name="title_activity_lista">ListaActivity</string>
+    <string name="coluna_gasolina">Gasolina</string>
+    <string name="coluna_etanol">Etanol</string>
+    <string name="linha_tanqueCombustivel">Consumo</string>
+    <string name="linha_valor">Preço</string>
     
     <!-- Strings da tela adicionar abastecimento -->
     

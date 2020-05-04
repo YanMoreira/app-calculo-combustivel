@@ -7,4 +7,11 @@
     <color name="corBase">#f9f9f9</color>
     <color name="corLabelFab">#F1EFEF</color>
     <color name="corFabPressionado">#99FFFFFF</color>
+    <color name="corFundoToast">#DD808080</color>
+    <color name="corTextToast">#ffffff</color>
+
+
+    <!-- cores custo viagem-->
+
+    <color name="corTextoTabela">#333333</color>
 </resources>

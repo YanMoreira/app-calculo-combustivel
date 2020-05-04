@@ -15,11 +15,9 @@
             android:label="@string/title_activity_lista"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.CustoViagemActivity"
-            android:screenOrientation="locked" />
+            android:name=".activity.CustoViagemActivity"/>
         <activity
-            android:name=".activity.MainActivity"
-            android:screenOrientation="sensor">
+            android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
