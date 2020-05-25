@@ -16,6 +16,7 @@ import java.util.List;
 public class ListaAdapter extends RecyclerView.Adapter<ListaAdapter.MyViewHolder> {
 
     private List<Lista> listaAbastecimentos;
+
     public ListaAdapter(List<Lista> listaAbastecimentos) {
 
         this.listaAbastecimentos = listaAbastecimentos;
@@ -37,7 +38,7 @@ public class ListaAdapter extends RecyclerView.Adapter<ListaAdapter.MyViewHolder
 
         Lista lista = listaAbastecimentos.get(position);
         holder.combustivel.setText("Combustível: " + lista.getNomeCombutivel());
-        holder.preco.setText("Preço: R$ " + lista.getValorCombustivel());
+        holder.preco.setText("Preço: R$ " + String.valueOf(String.format("%.2f",lista.getValorCombustivel())));
         holder.data.setText("Data: " + lista.getDataCombustivel());
     }
 

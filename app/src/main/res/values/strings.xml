@@ -29,11 +29,14 @@
     
     <!-- Strings da tela adicionar abastecimento -->
     
-    <string name="tipo_combustivel">Tipo do combustível abastecido</string>
+    <string name="tipo_combustivel">Escolha o tipo do combustível abastecido</string>
     <string name="preco_pago">Preço do combustível</string>
-    <string name="data_abastecimento">Data de abastecimento</string>
-    <string name="botao_salvar">salvar</string>
+    <string name="data_abastecimento">Data do abastecimento</string>
     <string name="titulo_tela_add_abastecimento">Adicionar abastecimento</string>
+    <string name="menu_salvar">Adicionar</string>
+    <string name="escolha_gasolina">Gasolina comum</string>
+    <string name="escolha_etanol">Etanol Comum</string>
+    <string name="formato_data">DD/MM/AAAA</string>
 
     <!-- Strings da tela lista de abastecimentos -->
 

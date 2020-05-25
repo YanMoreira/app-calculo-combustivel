@@ -1,10 +1,14 @@
 package com.example.calculadoradecombustvel.activity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.calculadoradecombustvel.R;
 import com.example.calculadoradecombustvel.adapter.ListaAdapter;
+import com.example.calculadoradecombustvel.helper.AbastecimentoDAO;
+import com.example.calculadoradecombustvel.helper.DbHelper;
+import com.example.calculadoradecombustvel.helper.RecyclerItemClickListener;
 import com.example.calculadoradecombustvel.model.Lista;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -16,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -47,6 +52,31 @@ public class ListaActivity extends AppCompatActivity {
         //Configurar recycler
         recyclerLista = findViewById(R.id.recyclerLista);
 
+
+        //Adicionar evento de clique
+        recyclerLista.addOnItemTouchListener(
+                new RecyclerItemClickListener(
+                        getApplicationContext(),
+                        recyclerLista,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            }
+                        }
+                )
+        );
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,23 +90,8 @@ public class ListaActivity extends AppCompatActivity {
     public void carregarLista() {
 
         //Listar abastecimentos
-        Lista lista1 = new Lista();
-        lista1.setNomeCombutivel("Gasolina");
-        lista1.setValorCombustivel("100,00");
-        lista1.setDataCombustivel("19/03/2020");
-        listaAbastecimentos.add(lista1);
-
-        Lista lista2 = new Lista();
-        lista2.setNomeCombutivel("Etanol");
-        lista2.setValorCombustivel("200,00");
-        lista2.setDataCombustivel("03/04/2020");
-        listaAbastecimentos.add(lista2);
-
-        Lista lista3 = new Lista();
-        lista3.setNomeCombutivel("Gasolina");
-        lista3.setValorCombustivel("160,00");
-        lista3.setDataCombustivel("19/04/2020");
-        listaAbastecimentos.add(lista3);
+        AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(getApplicationContext());
+        listaAbastecimentos = abastecimentoDAO.listar();
 
         //Configurar Adapter
         listaAdapter = new ListaAdapter(listaAbastecimentos);

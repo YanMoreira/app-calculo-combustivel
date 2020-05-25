@@ -6,7 +6,7 @@ public class Lista implements Serializable {
 
     private Long id;
     private String nomeCombutivel;
-    private String valorCombustivel;
+    private double valorCombustivel;
     private String dataCombustivel;
 
     public Long getId() {
@@ -25,11 +25,11 @@ public class Lista implements Serializable {
         this.nomeCombutivel = nomeCombutivel;
     }
 
-    public String getValorCombustivel() {
+    public double getValorCombustivel() {
         return valorCombustivel;
     }
 
-    public void setValorCombustivel(String valorCombustivel) {
+    public void setValorCombustivel(double valorCombustivel) {
         this.valorCombustivel = valorCombustivel;
     }
 

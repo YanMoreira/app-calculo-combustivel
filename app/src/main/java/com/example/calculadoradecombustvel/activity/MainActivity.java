@@ -100,9 +100,14 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
 
-          Toast toast = Toast.makeText(this, erroValidacao, Toast.LENGTH_LONG);
-          toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.START, 240, -25);
-          toast.show();
+            Toast toast = Toast.makeText(this, erroValidacao, Toast.LENGTH_LONG);
+            View toastView = toast.getView();
+            TextView toastText = toastView.findViewById(android.R.id.message);
+            //Alterando cor do texto exibido
+            toastText.setTextColor(getResources().getColor(R.color.corTextToast));
+            //alterando plano de fundo
+            toastView.setBackgroundResource(R.drawable.plano_de_fundo_toast);
+            toast.show();
         }
     }
 

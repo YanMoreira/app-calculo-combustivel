@@ -179,7 +179,9 @@ public class CustoViagemActivity extends AppCompatActivity {
         }
 
         else {
+            String erroSelecionar = "Selecione uma opção para calcular o combustível que deseja";
 
+            visualizarToastErro(erroSelecionar);
 
         }
 

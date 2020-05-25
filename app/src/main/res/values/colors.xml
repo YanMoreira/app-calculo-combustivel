@@ -10,6 +10,10 @@
     <color name="corFundoToast">#DD808080</color>
     <color name="corTextToast">#ffffff</color>
 
+    <!-- cores tela add abastecimento-->
+
+    <color name="corBotaoAddAbastecimento">#AFAFAF</color>
+    <color name="corTextViewData">#EAE9E9</color>
 
     <!-- cores custo viagem-->
 
