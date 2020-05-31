@@ -1,6 +1,8 @@
 package com.example.calculadoradecombustvel.activity;
 
+import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -13,6 +15,7 @@ import com.example.calculadoradecombustvel.model.Lista;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -22,6 +25,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +36,7 @@ public class ListaActivity extends AppCompatActivity {
     private RecyclerView recyclerLista;
     private ListaAdapter listaAdapter;
     private List<Lista> listaAbastecimentos = new ArrayList<>();
+    private Lista objSelecionado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,11 +67,40 @@ public class ListaActivity extends AppCompatActivity {
                         new RecyclerItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
+                                //Recuperar abastecimento selecionado
+                                Lista objSelecionado = listaAbastecimentos.get(position);
 
+                                //Enviando os dados para a tela de adicionar abastecimento
+                                Intent intent = new Intent(getApplicationContext(), AdicionarAbastecimentoActivity.class);
+                                intent.putExtra("abastecimentoSelecionado", objSelecionado);
+                                startActivity(intent);
                             }
 
                             @Override
                             public void onLongItemClick(View view, int position) {
+
+                                objSelecionado = listaAbastecimentos.get(position);
+                                AlertDialog.Builder dialog = new AlertDialog.Builder(ListaActivity.this);
+
+                                //Configurar título e mensagem
+                                dialog.setTitle("Confirmar exclusão");
+                                dialog.setMessage("Deseja excluir o abastecimento?");
+
+                                dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                        AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(getApplicationContext());
+                                        abastecimentoDAO.deletar(objSelecionado);
+                                        carregarLista();
+                                        
+                                    }
+                                });
+
+                                dialog.setNegativeButton("Não", null);
+
+                                dialog.create();
+                                dialog.show();
 
                             }
 

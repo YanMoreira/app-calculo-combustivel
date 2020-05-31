@@ -35,17 +35,27 @@ public class AdicionarAbastecimentoActivity extends AppCompatActivity implements
     private TextView textAddGasolina, textAddEtanol, textData;
     private TextInputEditText editAddPreco;
     private String checkGasolina = "", checkEtanol = "", data = "";
+    private Lista listaAtual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adicionar_abastecimento);
 
+        //Recuperando abastecimento se o usuário for editar
+        listaAtual = (Lista) getIntent().getSerializableExtra("abastecimentoSelecionado");
+
         textData = findViewById(R.id.textData);
         editAddPreco = findViewById(R.id.editAddPreco);
         textAddGasolina = findViewById(R.id.textAddGasolina);
         textAddEtanol = findViewById(R.id.textAddEtanol);
 
+        //Configurando caixas de texto
+        if (listaAtual != null) {
+
+            textData.setText(listaAtual.getDataCombustivel());
+            editAddPreco.setText(Double.toString(listaAtual.getValorCombustivel()));
+        }
         toolbar = findViewById(R.id.toolbarLista);
         setSupportActionBar(toolbar);
 
@@ -122,45 +132,85 @@ public class AdicionarAbastecimentoActivity extends AppCompatActivity implements
 
             case R.id.itemSalvar:
 
-                //Limitando valor em duas casas após a vírgula e convertendo para double
-                double editAddPrecoConvert = Double.parseDouble(editAddPreco.getText().toString());
+                AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(getApplicationContext());
+                Lista lista = new Lista();
 
-                //Validando se todos os dados foram digitados
-                String dadosValidados = validarDados(checkGasolina, checkEtanol, editAddPreco.getText().toString(), data);
+                if (listaAtual != null) { //Editando o abastecimento
 
-                if(dadosValidados.equals("")) {
+                    //Validando se todos os dados foram digitados
+                    String dadosValidados = validarDados(checkGasolina, checkEtanol, editAddPreco.getText().toString(), data);
 
-                    //Realizando inserção no banco de dados
-                    AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(getApplicationContext());
-                    Lista lista = new Lista();
+                    if (dadosValidados.equals("")) {
 
-                    if(checkGasolina.equals("1")) {
+                        //Limitando valor em duas casas após a vírgula e convertendo para double
+                        double editAddPrecoConvert = Double.parseDouble(editAddPreco.getText().toString());
 
-                        lista.setNomeCombutivel("Gasolina");
+                        if (checkGasolina.equals("1")) {
+
+                            lista.setNomeCombutivel("Gasolina");
+                        }
+
+                        else {
+
+                            lista.setNomeCombutivel("Etanol");
+                        }
+
+                        lista.setValorCombustivel(editAddPrecoConvert);
+                        lista.setDataCombustivel(textData.getText().toString());
+                        lista.setId(listaAtual.getId());
+
+                        //Atualizar banco de dados
+                        abastecimentoDAO.atualizar(lista);
+
+                        finish();
                     }
 
                     else {
 
-                        lista.setNomeCombutivel("Etanol");
+                            visualizarToastErro(dadosValidados);
+                        }
+
+                }
+
+                else { //criando um novo abastecimento
+
+                    //Validando se todos os dados foram digitados
+                    String dadosValidados = validarDados(checkGasolina, checkEtanol, editAddPreco.getText().toString(), data);
+
+                    if (dadosValidados.equals("")) {
+
+                        //Limitando valor em duas casas após a vírgula e convertendo para double
+                        double editAddPrecoConvert = Double.parseDouble(editAddPreco.getText().toString());
+
+                        //Realizando inserção no banco de dados
+
+                        if (checkGasolina.equals("1")) {
+
+                            lista.setNomeCombutivel("Gasolina");
+                        } else {
+
+                            lista.setNomeCombutivel("Etanol");
+                        }
+
+                        lista.setValorCombustivel(editAddPrecoConvert);
+                        lista.setDataCombustivel(data);
+                        abastecimentoDAO.salvar(lista);
+
+                        finish();
                     }
 
-                    lista.setValorCombustivel(editAddPrecoConvert);
-                    lista.setDataCombustivel(data);
-                    abastecimentoDAO.salvar(lista);
+                    else {
+
+                        visualizarToastErro(dadosValidados);
+                    }
+
                 }
 
-                else {
-
-                    visualizarToastErro(dadosValidados);
-                }
-
-                finish();
                 break;
-
         }
-
         return super.onOptionsItemSelected(item);
     }
+
 
     //Métdodo para visualizar o pop-up da data
 

@@ -45,12 +45,36 @@ public class AbastecimentoDAO implements IAbastecimentoDAO {
 
     @Override
     public boolean atualizar(Lista lista) {
-        return false;
+
+        try {
+
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("combustivel", lista.getNomeCombutivel());
+            contentValues.put("valor", lista.getValorCombustivel());
+            contentValues.put("data", lista.getDataCombustivel());
+
+            String[] args = {lista.getId().toString()};
+            escrita.update(DbHelper.TABELA_ABASTECIMENTOS, contentValues, "id = ?", args);
+        }
+        catch (Exception e) {
+
+        }
+        return true;
     }
 
     @Override
     public boolean deletar(Lista lista) {
-        return false;
+
+        try {
+
+            String args[] = {lista.getId().toString()};
+            escrita.delete(DbHelper.TABELA_ABASTECIMENTOS, "id = ?", args);
+        }
+
+        catch (Exception e) {
+
+        }
+        return true;
     }
 
     @Override
